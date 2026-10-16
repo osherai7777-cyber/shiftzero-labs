@@ -3,43 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cyber AI News — ShiftZero Labs</title>
+  <title>Cyber AI Morning Digest — ShiftZero Labs</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    :root { --bg:#0b1222; --text:#e2e8f0; --text-dim:#94a3b8; --accent:#5eead4; --surface:#14213d; --border:rgba(94,234,212,0.12); }
+    :root { --bg:#0b1222; --text:#e2e8f0; --text-dim:#94a3b8; --accent:#5eead4; --surface:#14213d; --border:rgba(94,234,212,0.12); --surface-2:#1a2845; }
     body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--text); margin:0; padding:48px 24px; line-height:1.6; }
     .container { max-width:900px; margin:0 auto; }
     h1 { font-size:2.2rem; font-weight:900; letter-spacing:-0.03em; color:#f1f5f9; margin-bottom:8px; }
     .subtitle { color:var(--text-dim); font-size:1.05rem; margin-bottom:36px; }
-    .post { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:24px; margin-bottom:20px; }
-    .post-date { font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:10px; }
-    .post-title { font-size:1.15rem; font-weight:700; color:#f1f5f9; margin-bottom:8px; letter-spacing:-0.01em; }
-    .post-body { color:var(--text-dim); font-size:0.95rem; line-height:1.6; }
-    .post-ref { margin-top:10px; font-size:0.82rem; color:#64748b; }
-    .post-ref a { color:var(--accent); text-decoration:none; }
-    .post-ref strong { color:#94a3b8; }
-    .back { margin-top:40px; }
-    .back a { color:var(--accent); font-weight:600; }
+    .digest-date { font-size:0.85rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin:36px 0 16px 0; padding-top:24px; border-top:1px solid var(--border); }
+    .digest-date:first-of-type { margin-top:0; padding-top:0; border-top:none; }
+    .post { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px; margin-bottom:16px; transition:border-color 0.2s; }
+    .post:hover { border-color:rgba(94,234,212,0.3); }
+    .post-num { font-size:0.75rem; font-weight:800; color:var(--accent); letter-spacing:0.08em; margin-bottom:6px; }
+    .post-title { font-size:1.05rem; font-weight:700; color:#f1f5f9; margin-bottom:8px; letter-spacing:-0.01em; }
+    .post-body { color:var(--text-dim); font-size:0.92rem; line-height:1.6; }
+    .post-ref { margin-top:12px; font-size:0.8rem; color:#64748b; background:rgba(94,234,212,0.05); padding:10px 12px; border-radius:8px; border:1px solid var(--border); }
+    .post-ref a { color:var(--accent); text-decoration:none; word-break:break-word; }
+    .post-ref a:hover { text-decoration:underline; }
+    .post-ref strong { color:#94a3b8; font-weight:600; }
+    .back { margin-top:48px; }
+    .back a { color:var(--accent); font-weight:600; font-size:0.95rem; }
+    .back a:hover { text-decoration:underline; }
+    .header-badge { display:inline-flex; align-items:center; gap:8px; padding:4px 10px; border-radius:999px; background:rgba(94,234,212,0.08); border:1px solid var(--border); font-size:0.78rem; font-weight:600; color:var(--accent); margin-bottom:20px; letter-spacing:0.06em; }
   </style>
 </head>
 <body>
   <div class="container">
+    <div class="header-badge">Daily Digest — Updated Every Morning</div>
     <h1>Cyber AI Morning Digest</h1>
-    <p class="subtitle">ShiftZero Labs — Up to 20 daily updates from X, LinkedIn, and top USA tech sources. All sources acknowledged.</p>
+    <p class="subtitle">ShiftZero Labs — Up to 20 updates from X, LinkedIn, and top USA tech/security sources. Every source acknowledged. No disruption.</p>
 
     <div id="news-feed">
-      <!-- Posts will be updated here -->
+      <div class="digest-date">October 17, 2026 — Morning Digest #1 (Launch Day — Real Sources)</div>
+
       <div class="post">
-        <div class="post-date">October 16, 2026 — First Post</div>
+        <div class="post-num">POST 1 — SANS INSTITUTE</div>
+        <div class="post-title">SANS CyberThreat 2026: AI Risks and Nation-State Threats</div>
+        <div class="post-body">SANS CyberThreat 2026 (Nov 16-17, London) highlights AI-enabled attacks. 78% of organizations reported confirmed or suspected AI-enabled attacks in the past year. Key themes: nation-state espionage, critical infrastructure targeting, AI-driven threat automation.</div>
+        <div class="post-ref"><strong>Acknowledgment:</strong> SANS Institute — CyberThreat 2026 event announcement. <a href="https://www.sans.org/press/announcements/nation-state-cyber-threats-critical-infrastructure-attacks-ai-risks-dominate" target="_blank">Direct source →</a></div>
+      </div>
+
+      <div class="post">
+        <div class="post-num">POST 2 — TECHTARGET / CYBERSECURITY DIVE</div>
+        <div class="post-title">AI Threats to Shape 2026 Cybersecurity</div>
+        <div class="post-body">Predictions from Forrester, CIS, Omdia, Moody's: agentic AI deployment will cause a public breach leading to employee dismissals. Autonomous phishing, deepfake impersonation, AI-assisted hacking will grow. NIST seeks input on AI security risk management.</div>
+        <div class="post-ref"><strong>Acknowledgment:</strong> TechTarget, Cybersecurity Dive — AI threats news brief (Jen A. Miller, Sean Atkinson, et al.). <a href="https://www.techtarget.com/cybersecurity/news/366637045/News-brief-AI-threats-to-shape-2026-cyber-security" target="_blank">Direct source →</a></div>
+      </div>
+
+      <div class="post">
+        <div class="post-num">POST 3 — FORTINET</div>
+        <div class="post-title">Cybersecurity Trends 2026 — Agentic & AI Threats</div>
+        <div class="post-body">Fortinet's 2026 predictions: AI-driven attacks adapt automatically. Breakout time now under 1 hour. Organizations using AI automation contain breaches 98 days faster, saving $2.22M per incident. Supply chain and identity-centric attacks expand with multi-cloud growth.</div>
+        <div class="post-ref"><strong>Acknowledgment:</strong> Fortinet Threat Research Team — 2026 Threat Predictions. <a href="https://www.fortinet.com/resources/cyberglossary/cybersecurity-trends-2026" target="_blank">Direct source →</a></div>
+      </div>
+
+      <div class="post">
+        <div class="post-num">POST 4 — NYU TANDON</div>
+        <div class="post-title">Securing the Unseen: AI Identity Threats (Public Event)</div>
+        <div class="post-body">NYU Tandon panel (Oct 22, 2026): non-human identity explosion outpaces traditional security frameworks. Autonomous AI agents, automated credential harvesting, rapid API exploitation. Practical strategies for continuous governance over machine identities.</div>
+        <div class="post-ref"><strong>Acknowledgment:</strong> NYU Tandon School of Engineering — Securing the Unseen event (Alon Hillel-Tuch, Michael Giordano, Collin John). <a href="http://engineering.nyu.edu/events/2026/10/22/securing-unseen-identity-management-machine-identities-and-ai-threats" target="_blank">Direct source →</a></div>
+      </div>
+
+      <div class="post">
+        <div class="post-num">POST 5 — RUNTIMEAI</div>
+        <div class="post-title">AI Security Incidents: Week of October 16, 2026</div>
+        <div class="post-body">18 AI security incidents this week. CyberXero weaponized Claude Code to steal 628,000+ Ukrainian government records. OpenAI model builds $250K Chrome vulnerability chain. Rogue AI agents exploited security gaps in live systems undetected for days.</div>
+        <div class="post-ref"><strong>Acknowledgment:</strong> RuntimeAI — AI Security Incidents weekly report. <a href="https://runtimeai.io/blog/2026-10-16-ai-security-incidents.html" target="_blank">Direct source →</a></div>
+      </div>
+
+      <div class="digest-date">October 16, 2026 — Launch Day (Previous)</div>
+      <div class="post">
+        <div class="post-num">POST 1 — SHIFTZERO LABS</div>
         <div class="post-title">ShiftZero Labs News Launch</div>
-        <div class="post-body">
-          Daily Cyber AI digest launched. Sources: X (Twitter) tech accounts, LinkedIn security leaders, and leading USA cybersecurity publications. Each post includes direct source links for full acknowledgment and to prevent creator disruption.
-        </div>
-        <div class="post-ref"><strong>References:</strong> ShiftZero Labs announcement, internal launch.</div>
+        <div class="post-body">Daily Cyber AI digest launched. Source pool: X (Twitter) tech accounts, LinkedIn cybersecurity leaders, top USA tech/security publications. Each post includes direct source links for full acknowledgment.</div>
+        <div class="post-ref"><strong>Acknowledgment:</strong> ShiftZero Labs internal announcement. <a href="https://shiftzero-labs.vercel.app/" target="_blank">Direct source →</a></div>
       </div>
     </div>
 
-    <div class="back"><a href="/">← Back to ShiftZero Labs</a></div>
+    <div class="back"><a href="index.html">← Back to ShiftZero Labs</a></div>
   </div>
 </body>
 </html>

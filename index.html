@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CISO as a Service — Security Leadership for Startups & Small Companies</title>
+  <meta name="description" content="Fractional CISO services for startups and small companies. NIST, FedRAMP, HIPAA, HITRUST, SOC 2, ISO 27001, GDPR compliance and security strategy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a1628'/><path d='M10 16 L14 12 L18 16 L14 20 Z' fill='%235eead4'/><circle cx='16' cy='16' r='10' fill='none' stroke='%235eead4' stroke-width='2'/></svg>">
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0b1222;
+      --bg-2: #0f1a2e;
+      --bg-3: #14213d;
+      --surface: #1a2845;
+      --surface-2: #1f3055;
+      --border: rgba(94, 234, 212, 0.12);
+      --border-2: rgba(94, 234, 212, 0.22);
+      --text: #e2e8f0;
+      --text-dim: #94a3b8;
+      --text-muted: #64748b;
+      --accent: #5eead4;
+      --accent-2: #2dd4bf;
+      --accent-glow: rgba(94, 234, 212, 0.15);
+      --danger: #f87171;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --radius: 14px;
+      --radius-sm: 10px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--accent); color: #0b1222; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(11, 18, 34, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; letter-spacing: -0.02em; }
+    .logo svg { flex-shrink: 0; }
+    .logo-accent { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 0.92rem; font-weight: 500; color: var(--text-dim); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .btn-ghost {
+      padding: 8px 18px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border-2); color: var(--text);
+      font-weight: 600; font-size: 0.9rem; transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: rgba(94,234,212,0.05); }
+
+    /* ── HERO ── */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(94,234,212,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(94,234,212,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 70%);
+    }
+    .hero-glow {
+      position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse at center, rgba(94,234,212,0.10) 0%, transparent 70%);
+      filter: blur(60px);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 999px;
+      background: rgba(94,234,212,0.08); border: 1px solid var(--border-2);
+      font-size: 0.82rem; font-weight: 600; color: var(--accent);
+      letter-spacing: 0.02em; margin-bottom: 28px;
+    }
+    .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.2); } }
+    .hero-title {
+      font-size: clamp(2.6rem, 6vw, 4.2rem); font-weight: 900;
+      line-height: 1.08; letter-spacing: -0.035em; margin-bottom: 22px;
+    }
+    .title-line.accent { color: var(--accent); display: block; }
+    .hero-sub {
+      font-size: 1.15rem; color: var(--text-dim); max-width: 600px;
+      line-height: 1.65; margin-bottom: 32px;
+    }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 26px; border-radius: var(--radius-sm);
+      background: var(--accent); color: #0b1222;
+      font-weight: 700; font-size: 1rem; letter-spacing: -0.01em;
+      transition: all 0.2s; box-shadow: 0 0 20px rgba(94,234,212,0.25);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(94,234,212,0.4); }
+    .btn-primary svg { transition: transform 0.2s; }
+    .btn-primary:hover svg { transform: translateX(3px); }
+    .hero-trust { padding-top: 18px; border-top: 1px solid var(--border); }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-dim); }
+    .trust-label { color: var(--text-muted); font-weight: 500; }
+    .trust-value { color: var(--text); font-weight: 600; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 96px 0; position: relative; }
+    .section-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 14px;
+    }
+    .section-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--accent); border-radius: 2px; }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1.15; color: #f1f5f9;
+      margin-bottom: 14px;
+    }
+    .section-sub { color: var(--text-dim); font-size: 1.08rem; max-width: 620px; margin-bottom: 48px; }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+    }
+    .service-card, .card-card {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 26px 24px;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .service-card:hover, .card-card:hover {
+      border-color: var(--border-2); transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    }
+    .service-card:hover::before, .card-card:hover::before { opacity: 1; }
+    .service-card.highlight { border-color: var(--border-2); background: linear-gradient(135deg, rgba(94,234,212,0.06), var(--bg-2) 60%); }
+    .card-icon {
+      width: 48px; height: 48px; border-radius: var(--radius-sm);
+      background: rgba(94,234,212,0.10); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); margin-bottom: 18px; transition: all 0.25s;
+    }
+    .service-card:hover .card-icon { background: rgba(94,234,212,0.18); border-color: var(--accent); }
+    .card-tags { margin-bottom: 12px; }
+    .tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: rgba(94,234,212,0.10); color: var(--accent); border: 1px solid var(--border); }
+    .tag-new { background: rgba(94,234,212,0.15); border-color: var(--accent); }
+    .card-body h3 { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .card-desc { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 16px; line-height: 1.55; }
+    .service-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .service-list li { font-size: 0.88rem; color: var(--text-dim); display: flex; align-items: flex-start; gap: 8px; line-height: 1.45; }
+    .bullet { flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-top: 7px; opacity: 0.8; }
+    .service-list strong { color: #e2e8f0; font-weight: 600; }
+    .services-cta {
+      margin-top: 44px; padding: 28px 32px;
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius); display: flex; align-items: center; gap: 20px;
+    }
+    .services-cta p { color: var(--text-dim); font-size: 0.98rem; max-width: 520px; }
+    .btn-outline {
+      padding: 12px 22px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border-2); background: transparent;
+      color: var(--accent); font-weight: 600; font-size: 0.95rem;
+      white-space: nowrap; transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); background: rgba(94,234,212,0.06); }
+
+    /* ── APPROACH ── */
+    .approach-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
+    .approach-card {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 22px;
+      position: relative;
+    }
+    .step-num {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em;
+      color: var(--accent); margin-bottom: 16px;
+    }
+    .approach-card h3 { font-size: 1.08rem; font-weight: 700; color: #f1f5f9; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .approach-card p { color: var(--text-dim); font-size: 0.88rem; line-height: 1.55; }
+    .approach-cta { padding: 28px 32px; background: linear-gradient(135deg, rgba(94,234,212,0.08), var(--bg-2)); border: 1px solid var(--border-2); border-radius: var(--radius); }
+    .approach-quote {
+      font-size: 1.05rem; color: var(--text); font-weight: 500;
+      line-height: 1.6; font-style: italic; letter-spacing: -0.01em;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--bg-2); }
+    .about-line { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--border-2), transparent); }
+    .about-grid { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: center; }
+    .about-avatar {
+      width: 200px; height: 200px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--surface), var(--surface-2));
+      border: 2px solid var(--border-2); display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 40px rgba(94,234,212,0.08);
+    }
+    .about-avatar svg { width: 80px; height: 80px; }
+    .about-bio { color: var(--text-dim); font-size: 1.02rem; line-height: 1.65; margin-bottom: 16px; }
+    .about-bio strong { color: #e2e8f0; font-weight: 600; }
+    .about-creds { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .cred-item {
+      padding: 12px 16px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); display: flex; flex-direction: column; gap: 3px;
+    }
+    .cred-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+    .cred-value { font-size: 0.95rem; color: var(--text); font-weight: 600; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--bg); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .contact-text { padding-top: 8px; }
+    .contact-sub { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 28px; }
+    .contact-detail { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .detail-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+    .detail-value { font-size: 0.95rem; color: var(--text); font-weight: 600; }
+    .contact-form-wrap {
+      background: var(--bg-2); border: 1px solid var(--border-2);
+      border-radius: var(--radius); padding: 32px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-field { margin-bottom: 16px; }
+    .form-field label {
+      display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-dim);
+      margin-bottom: 6px; letter-spacing: -0.01em;
+    }
+    .form-field input, .form-field select, .form-field textarea {
+      width: 100%; padding: 11px 14px;
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      color: var(--text); font-family: var(--font); font-size: 0.95rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+      border-color: var(--accent); box-shadow: 0 0 0 3px rgba(94,234,212,0.12);
+    }
+    .form-field input::placeholder, .form-field textarea::placeholder { color: var(--text-muted); }
+    .form-field select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+    .btn-primary.btn-full { width: 100%; justify-content: center; margin-top: 6px; }
+    .form-note { margin-top: 12px; font-size: 0.8rem; color: var(--text-muted); text-align: center; }
+    .form-success {
+      text-align: center; padding: 32px 0;
+    }
+    .form-success svg { color: var(--accent); margin-bottom: 14px; }
+    .form-success h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; color: #f1f5f9; }
+    .form-success p { color: var(--text-dim); }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border); padding: 24px 0;
+      background: var(--bg-2);
+    }
+    .footer-inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-left { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; }
+    .logo-small svg { width: 28px; height: 28px; }
+    .footer-copy { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .approach-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-avatar { width: 150px; height: 150px; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .approach-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 1.6rem; }
+      .hero-title { font-size: 2.2rem; }
+      .services-cta, .approach-cta { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ── NAV ── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="6" fill="#0f1d33"/>
+          <path d="M10 16 L14 12 L18 16 L14 20 Z" fill="#5eead4"/>
+          <circle cx="16" cy="16" r="9" stroke="#5eead4" stroke-width="1.5" fill="none"/>
+        </svg>
+        <span>CISO<span class="logo-accent">·</span>as<span class="logo-accent">·</span>Service</span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn-ghost">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="top" class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Fractional CISO for startups
+      </div>
+      <h1 class="hero-title">
+        Enterprise-grade security.<br>
+        <span class="title-line accent">Without the enterprise price tag.</span>
+      </h1>
+      <p class="hero-sub">
+        You're building fast. You need security that keeps up — not a full-time CISO on a six-figure salary before you've shipped.
+        I help startups and small companies build real security programs, reach compliance, and sleep at night.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">
+          Start a conversation
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#services" class="btn-ghost">See what's covered</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="trust-label">Previously</span>
+          <span class="trust-value">CISO at the Technion</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-eyebrow">What I cover</div>
+      <h2 class="section-title">Security services, built for how startups actually work</h2>
+      <p class="section-sub">No bloated retainers. No 80-page documents nobody reads. Practical security that fits a small team moving fast.</p>
+
+      <div class="services-grid">
+        <!-- Compliance frameworks -->
+        <div class="service-card highlight">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 12l2 2 4-4M7.5 18a4.5 4.5 0 109 0 4.5 4.5 0 00-9 0z"/>
+              <circle cx="12" cy="12" r="9"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-tags"><span class="tag tag-new">Focus area</span></div>
+            <h3>Compliance frameworks</h3>
+            <p class="card-desc">Get audit-ready for the frameworks your customers, investors, or regulators demand — without the full-time hire.</p>
+            <ul class="service-list">
+              <li><span class="bullet"></span><strong>NIST</strong> — CSF alignment, risk frameworks, SP 800-series mapping</li>
+              <li><span class="bullet"></span><strong>FedRAMP</strong> — readiness assessment, control mapping, documentation path</li>
+              <li><span class="bullet"></span><strong>HIPAA</strong> — Security &amp; Privacy Rule compliance, BAA guidance, risk analysis</li>
+              <li><span class="bullet"></span><strong>HITRUST</strong> — CSF assessment preparation, CSF framing &amp; gap analysis</li>
+              <li><span class="bullet"></span><strong>SOC 2</strong> — Type I / Type II readiness and audit support</li>
+              <li><span class="bullet"></span><strong>ISO 27001</strong> — ISMS build-out, control implementation, audit preparation</li>
+              <li><span class="bullet"></span><strong>GDPR</strong> — Data protection program, RoPA, DPA support</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Risk & assessment -->
+        <div class="service-card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v4M12 16h.01"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Risk assessments &amp; gap analysis</h3>
+            <p class="card-desc">Know what's actually risky — not what a checkbox audit thinks. I run practical risk assessments, map your security posture, and build a prioritized roadmap.</p>
+            <ul class="service-list">
+              <li><span class="bullet"></span>Asset &amp; data flow discovery</li>
+              <li><span class="bullet"></span>Threat modeling for your product</li>
+              <li><span class="bullet"></span>Vendor &amp; third-party risk review</li>
+              <li><span class="bullet"></span>Prioritized remediation roadmap</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Security program & policy -->
+        <div class="service-card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+              <path d="M6.5 17L17 6.5M19.5 6.5V17A2.5 2.5 0 0117 19.5H9.5A2.5 2.5 0 017 17"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Security program &amp; policy</h3>
+            <p class="card-desc">Build the actual program — policies that people follow, not shelfware. I create lean, enforceable security policies, procedures, and a governance structure that scales with you.</p>
+            <ul class="service-list">
+              <li><span class="bullet"></span>Security policy framework</li>
+              <li><span class="bullet"></span>Access control &amp; IAM policy</li>
+              <li><span class="bullet"></span>Incident response plan &amp; playbooks</li>
+              <li><span class="bullet"></span>Business continuity / disaster recovery</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Architecture & engineering -->
+        <div class="service-card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Architecture &amp; engineering review</h3>
+            <p class="card-desc">Review your product architecture, cloud setup, and engineering practices. I work with your engineers to bake security into the build — not bolt it on after a breach.</p>
+            <ul class="service-list">
+              <li><span class="bullet"></span>Cloud security review (AWS / GCP / Azure)</li>
+              <li><span class="bullet"></span>Product security &amp; design review</li>
+              <li><span class="bullet"></span>Secure SDLC &amp; developer enablement</li>
+              <li><span class="bullet"></span>Secrets management &amp; encryption guidance</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Incident response -->
+        <div class="service-card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+              <path d="M12 9v4M12 17h.01"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Incident response</h3>
+            <p class="card-desc">When something happens — or looks like it might — you need someone who's been through it. I build incident response capability and can help you respond when it counts.</p>
+            <ul class="service-list">
+              <li><span class="bullet"></span>IR plan &amp; severity classification</li>
+              <li><span class="bullet"></span>Tabletop exercises</li>
+              <li><span class="bullet"></span>Active incident support &amp; coordination</li>
+              <li><span class="bullet"></span>Post-incident review &amp; lessons learned</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Awareness & training -->
+        <div class="card-card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Security awareness &amp; training</h3>
+            <p class="card-desc">Your people are your biggest attack surface — and your best defense. Practical training that doesn't feel like a compliance chore.</p>
+            <ul class="service-list">
+              <li><span class="bullet"></span>Onboarding security training</li>
+              <li><span class="bullet"></span>Phishing simulations</li>
+              <li><span class="bullet"></span>Role-based security briefings</li>
+              <li><span class="bullet"></span>Annual refresher program</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="services-cta">
+        <p>Not sure what you need? That's normal. The first conversation is about figuring out where you actually are — no pitch, no pressure.</p>
+        <a href="#contact" class="btn-outline">Talk it through</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── APPROACH ── -->
+  <section id="approach" class="approach">
+    <div class="container">
+      <div class="section-eyebrow">How it works</div>
+      <h2 class="section-title">Security that fits your stage — not a generic framework dump</h2>
+
+      <div class="approach-grid">
+        <div class="approach-card">
+          <div class="step-num">01</div>
+          <h3>Understand your reality</h3>
+          <p>I start by learning your product, your stack, your team, your customers, and what "security" actually means for your business right now. No templates. No assumptions.</p>
+        </div>
+        <div class="approach-card">
+          <div class="step-num">02</div>
+          <h3>Build the roadmap</h3>
+          <p>You get a clear, prioritized plan — what to fix first, what compliance you actually need, what you can defer. Practical, not theoretical.</p>
+        </div>
+        <div class="approach-card">
+          <div class="step-num">03</div>
+          <h3>Execute with you</h3>
+          <p>I work alongside your team to implement the program — policies, controls, reviews, training, compliance documentation. I don't just write a report and disappear.</p>
+        </div>
+        <div class="approach-card">
+          <div class="step-num">04</div>
+          <h3>Stay as you grow</h3>
+          <p>Security isn't a one-time project. I stay engaged as you scale, add frameworks, face new customers or regulations, and keep the program alive.</p>
+        </div>
+      </div>
+
+      <div class="approach-cta">
+        <span class="approach-quote">"The goal isn't a perfect security program. It's a program that actually protects the business and lets you move fast without lying to your customers."</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about" class="about">
+    <div class="about-line"></div>
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">
+          <div class="about-avatar">
+            <svg width="80" height="80" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="12" r="8" fill="#1e3a5f"/>
+              <path d="M6 26c0-6.627 5.373-12 12-12s12 5.373 12 12" fill="#1e3a5f"/>
+              <circle cx="16" cy="12" r="8" stroke="#5eead4" stroke-width="1.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="about-content">
+          <div class="section-eyebrow">Who I am</div>
+          <h2 class="section-title" style="max-width: 480px">CISO by practice. Builder at heart.</h2>
+          <p class="about-bio">
+            I've served as <strong>CISO at the Technion</strong> — one of the world's leading science and technology institutions — where I was responsible for securing a large, complex, research-driven environment.
+          </p>
+          <p class="about-bio">
+            I bring that experience to startups and small companies that need enterprise-grade security but can't justify (or don't need) a full-time senior security leader on day one.
+          </p>
+          <p class="about-bio">
+            I work across the full security spectrum — strategy, compliance, architecture, incident response — and I write programs that real teams actually follow.
+          </p>
+          <div class="about-creds">
+            <div class="cred-item">
+              <span class="cred-label">Current focus</span>
+              <span class="cred-value">Fractional CISO for startups &amp; SMBs</span>
+            </div>
+            <div class="cred-item">
+              <span class="cred-label">Previous role</span>
+              <span class="cred-value">CISO, the Technion</span>
+            </div>
+            <div class="cred-item">
+              <span class="cred-label">Approach</span>
+              <span class="cred-value">Pragmatic, build-oriented, no shelfware</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="contact">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+    </div>
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-text">
+          <div class="section-eyebrow">Let's talk</div>
+          <h2 class="section-title" style="max-width: 440px">Ready to get serious about security?</h2>
+          <p class="contact-sub">Tell me where you are. I'll tell you where you need to be — and what it actually takes to get there.</p>
+          <div class="contact-detail">
+            <span class="detail-label">Response time</span>
+            <span class="detail-value">Usually within 24 hours</span>
+          </div>
+          <div class="contact-detail">
+            <span class="detail-label">First call</span>
+            <span class="detail-value">Free. 30 minutes. No pitch.</span>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+              </div>
+              <div class="form-field">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" placeholder="Your company">
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@company.com" required>
+            </div>
+            <div class="form-field">
+              <label for="company_size">Company size</label>
+              <select id="company_size" name="company_size">
+                <option value="">Select...</option>
+                <option value="1-10">1–10 people</option>
+                <option value="11-50">11–50 people</option>
+                <option value="51-200">51–200 people</option>
+                <option value="200+">200+ people</option>
+                <option value="not-sure">Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="what">What's on your mind?</label>
+              <select id="what" name="what">
+                <option value="">Select...</option>
+                <option value="compliance">Compliance — SOC 2, ISO 27001, HIPAA, FedRAMP, etc.</option>
+                <option value="strategy">Security strategy &amp; roadmap</option>
+                <option value="risk">Risk assessment / gap analysis</option>
+                <option value="incident">Incident response / past incident</option>
+                <option value="architecture">Architecture / engineering review</option>
+                <option value="vendor">Vendor / third-party risk</option>
+                <option value="training">Security awareness &amp; training</option>
+                <option value="other">Other / not sure</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="message">Tell me a bit about your situation</label>
+              <textarea id="message" name="message" rows="5" placeholder="What are you building? What's keeping you up at night? Any deadlines or customer requirements?"></textarea>
+            </div>
+            <button type="submit" class="btn-primary btn-full">
+              Send message
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <p class="form-note">Your message goes directly to me. No spam, no pitch deck. I read every one.</p>
+          </form>
+          <div class="form-success" id="formSuccess" style="display:none">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 12l2 2 4-4"/>
+            </svg>
+            <h3>Message sent</h3>
+            <p>Thanks — I'll get back to you within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <a href="#top" class="logo-small">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="5" fill="#0f1d33"/>
+            <path d="M10 16 L14 12 L18 16 L14 20 Z" fill="#5eead4"/>
+            <circle cx="16" cy="16" r="9" stroke="#5eead4" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span>CISO·as·Service</span>
+        </a>
+      </div>
+      <div class="footer-right">
+        <span class="footer-copy">Fractional CISO services for startups &amp; small companies.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = this;
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Sending…';
+      btn.disabled = true;
+
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        mode: 'no-cors'
+      }).then(() => {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }).catch(() => {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>

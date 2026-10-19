@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShiftZero Labs — CISO, DevSecOps & Security</title> — Security Leadership for Startups & Small Companies</title>
+  <title>Osher Levi — CISO, DevSecOps & Security | ShiftZero Labs</title>
   <meta name="description" content="ShiftZero Labs — CISO, DevSecOps, Security & Compliance and small companies. NIST, FedRAMP, HIPAA, HITRUST, SOC 2, ISO 27001, GDPR compliance and security strategy.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -119,6 +119,13 @@
     .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-dim); }
     .trust-label { color: var(--text-muted); font-weight: 500; }
     .trust-value { color: var(--text); font-weight: 600; }
+
+    /* ── NEWSLETTER LINK BANNER ── */
+    .newsletter-link-banner { display: flex; align-items: center; gap: 14px; padding: 14px 20px; background: linear-gradient(135deg, rgba(94,234,212,0.08), rgba(14,59,59,0.12)); border: 1px solid rgba(94,234,212,0.2); border-radius: 10px; margin-top: 28px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .newsletter-link-banner:hover { border-color: rgba(94,234,212,0.5); background: linear-gradient(135deg, rgba(94,234,212,0.15), rgba(14,59,59,0.2)); }
+    .newsletter-link-banner .nl-icon { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: var(--ink); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; }
+    .newsletter-link-banner .nl-text { font-family: var(--sans); font-size: 0.82rem; line-height: 1.35; color: var(--text); }
+    .newsletter-link-banner .nl-text strong { color: var(--text); font-weight: 600; display: block; font-size: 0.9rem; letter-spacing: -0.01em; }
 
     /* ── SECTION COMMON ── */
     section { padding: 96px 0; position: relative; }
@@ -276,19 +283,24 @@
     .footer-copy { font-size: 0.85rem; color: var(--text-muted); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .approach-grid { grid-template-columns: 1fr 1fr; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-avatar { width: 150px; height: 150px; }
-      .contact-inner { grid-template-columns: 1fr; }
+    @media (max-width: 860px) {
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .services-grid-custom { grid-template-columns: 1fr; }
       .nav-links { display: none; }
+      .hero-top { flex-direction: column; gap: 24px; }
+      .hero-top img { width: 100px; height: 100px; }
+      .hero-title { font-size: 2.2rem; }
+      .section-title { font-size: 1.6rem; }
+      section { padding: 64px 0; }
+      .newsletter-banner h2 { font-size: 1.8rem; }
     }
     @media (max-width: 600px) {
-      .approach-grid { grid-template-columns: 1fr; }
-      .section-title { font-size: 1.6rem; }
-      .hero-title { font-size: 2.2rem; }
-      .services-cta, .approach-cta { flex-direction: column; }
+      .hero-sub { font-size: 1rem; }
+      .hero-title { font-size: 2rem; }
+      .section-title { font-size: 1.5rem; }
+      .about-photo img { max-width: 280px; }
+      .timeline-entry .tags { gap: 6px; }
+      .timeline-entry .tag { font-size: 0.62rem; }
     }
   </style>
 </head>
@@ -302,7 +314,7 @@
           <path d="M10 16 L14 12 L18 16 L14 20 Z" fill="#5eead4"/>
           <circle cx="16" cy="16" r="9" stroke="#5eead4" stroke-width="1.5" fill="none"/>
         </svg>
-        <span>CISO<span class="logo-accent">·</span>as<span class="logo-accent">·</span>Service</span>
+        <span>Osher Levi <span style="color:var(--accent);font-size:0.9em;opacity:0.7;">· ShiftZero Labs</span></span>
       </a>
       <div class="nav-links">
         <a href="#services">Services</a>
@@ -344,6 +356,10 @@
           <span class="trust-value">CISO (Technion) · Founder, ShiftZero Labs</span>
         </div>
       </div>
+      <a href="news.html" class="newsletter-link-banner" aria-label="Read the Cyber AI Morning Digest newsletter">
+        <span class="nl-icon">N</span>
+        <span class="nl-text"><strong>Cyber AI Morning Digest</strong> — Updated daily at 11 AM. X, LinkedIn, USA tech sources. Every reference acknowledged.</span>
+      </a>
     </div>
   </section>
 

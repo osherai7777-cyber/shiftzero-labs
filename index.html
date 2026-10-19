@@ -287,20 +287,24 @@
       .about-grid { grid-template-columns: 1fr; gap: 32px; }
       .services-grid-custom { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .hero-top { flex-direction: column; gap: 24px; }
-      .hero-top img { width: 100px; height: 100px; }
-      .hero-title { font-size: 2.2rem; }
-      .section-title { font-size: 1.6rem; }
-      section { padding: 64px 0; }
-      .newsletter-banner h2 { font-size: 1.8rem; }
+      .hero-top { flex-direction: column; gap: 20px; align-items: flex-start; }
+      .hero-top img { width: 90px; height: 90px; }
+      .hero-title { font-size: 2rem; line-height: 1.05; }
+      .hero-sub { font-size: 0.98rem; }
+      section { padding: 56px 0; }
+      .newsletter-banner h2 { font-size: 1.6rem; }
+      .section-title { font-size: 1.5rem; }
+      .timeline-entry .tags { gap: 6px; flex-wrap: wrap; }
+      .timeline-entry .tag { font-size: 0.62rem; padding: 3px 8px; }
     }
     @media (max-width: 600px) {
-      .hero-sub { font-size: 1rem; }
-      .hero-title { font-size: 2rem; }
-      .section-title { font-size: 1.5rem; }
-      .about-photo img { max-width: 280px; }
-      .timeline-entry .tags { gap: 6px; }
-      .timeline-entry .tag { font-size: 0.62rem; }
+      .hero-sub { font-size: 0.92rem; }
+      .hero-title { font-size: 1.7rem; }
+      .section-title { font-size: 1.35rem; }
+      .about-photo img { max-width: 260px; }
+      .services-grid-custom { gap: 14px; }
+      .service-card-custom { padding: 20px 18px; }
+      .contact-form input, .contact-form textarea { font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -336,10 +340,12 @@
         <span class="badge-dot"></span>
         ShiftZero Labs — Security & DevSecOps
       </div>
-      <h1 class="hero-title">
-        ShiftZero Labs — Security that moves at DevOps speed.<br>
-        <span class="title-line accent">Zero Trust. Real-world speed. Freelance CISO & DevSecOps.</span>
+      <h1 style="font-family: var(--font); font-size: clamp(2.4rem, 8vw, 4rem); font-weight: 300; letter-spacing: -0.04em; line-height: 1.05; color: var(--ink); margin-bottom: 20px;">
+        Osher Levi <em style="font-style: italic; color: var(--gold);">CISO & DevSecOps</em>
       </h1>
+      <p style="font-family: var(--sans); font-size: 1.05rem; color: var(--text-dim); max-width: 520px; line-height: 1.7;">
+        Freelance CISO and DevSecOps Engineer. ShiftZero Labs bridges strategy and execution — Zero Trust, compliance, cloud security, incident response, AI security. Based in TLV, working globally.
+      </p>
       <p class="hero-sub">
         ShiftZero Labs bridges CISO strategy and DevOps execution. Zero Trust foundations. Security that scales with startups and companies moving fast. Based in TLV, working globally.
       </p>

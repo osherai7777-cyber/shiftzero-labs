@@ -142,9 +142,23 @@
     }
     .section-sub { color: var(--text-dim); font-size: 1.08rem; max-width: 620px; margin-bottom: 48px; }
 
-    /* ── SERVICES ── */
-    .services-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+    /* ── INTERACTIVE ENHANCEMENTS ── */
+    .service-card:hover, .card-card:hover { border-color: var(--border-2); transform: translateY(-4px) scale(1.01); box-shadow: 0 16px 48px rgba(0,0,0,0.35); }
+    .service-card:active, .card-card:active { transform: translateY(0) scale(0.99); }
+    a { transition: color 0.15s; }
+    .btn-ghost { transition: all 0.15s ease; position: relative; overflow: hidden; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: rgba(94,234,212,0.1); }
+    .btn-primary { transition: all 0.2s ease; position: relative; overflow: hidden; }
+    .btn-primary::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); transition: left 0.4s ease; }
+    .btn-primary:hover::after { left: 100%; }
+    .nav-links a { position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.3s; }
+    .nav-links a:hover::after { width: 100%; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .service-card { animation: fadeUp 0.6s ease both; }
+    .newsletter-banner a { transition: all 0.2s; box-shadow: 0 0 0 rgba(94,234,212,0); }
+    .newsletter-banner a:hover { box-shadow: 0 0 24px rgba(94,234,212,0.2); }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     }
     .service-card, .card-card {
       background: var(--bg-2); border: 1px solid var(--border);
@@ -362,9 +376,12 @@
           <span class="trust-value">CISO (Technion) · Founder, ShiftZero Labs</span>
         </div>
       </div>
-      <a href="news.html" class="newsletter-link-banner" aria-label="Read the Cyber AI Morning Digest newsletter">
-        <span class="nl-icon">N</span>
-        <span class="nl-text"><strong>Cyber AI Morning Digest</strong> — Updated daily at 11 AM. X, LinkedIn, USA tech sources. Every reference acknowledged.</span>
+      <a href="news.html" class="newsletter-link-banner" aria-label="Read the Cyber AI Morning Digest newsletter" style="margin-top: 36px; padding: 20px 24px; background: linear-gradient(135deg, rgba(94,234,212,0.1), rgba(14,59,59,0.2)); border: 2px solid rgba(94,234,212,0.35); border-radius: 14px; display: flex; align-items: center; gap: 16px; text-decoration: none; transition: all 0.3s ease;">
+        <span class="nl-icon" style="width: 48px; height: 48px; font-size: 1.1rem;">N</span>
+        <span class="nl-text" style="font-size: 0.95rem; line-height: 1.5; color: var(--text);">
+          <strong style="display: block; font-size: 1.15rem; letter-spacing: -0.01em; color: var(--text); margin-bottom: 2px;">Cyber AI Morning Digest</strong>
+          Updated daily at 11 AM. X, LinkedIn, USA tech/security sources. Every reference acknowledged.
+        </span>
       </a>
     </div>
   </section>

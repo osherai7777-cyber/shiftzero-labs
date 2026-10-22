@@ -82,3 +82,13 @@ Status: Auto-fetched from 4 sources. Referenced below.
 - Source: Fortinet | Title: Cybersecurity trends 2026: Defending against agentic &amp; AI threats | URL: https://www.fortinet.com/resources/cyberglossary/cybersecurity-trends-2026
 - Source: RuntimeAI | Title: AI Security Incidents: Week of October 16, 2026 &mdash; Claude Code Weaponized for 628K Ukrainian Breach, OpenAI Builds $250K Chrome Exploit in 6 Days, ASOS &amp; CenterPoint Hit &mdash; 18 AI Security Incidents &mdash; RuntimeAI | URL: https://runtimeai.io/blog/2026-10-16-ai-security-incidents.html
 - Acknowledgment: All sources cited with direct URLs. No creator disruption intended.
+
+---
+
+## 2026-10-22 — Morning Digest (Auto-Search)
+Status: Auto-fetched from 4 sources. Referenced below.
+- Source: SANS | Title: Press Announcements | SANS Institute | URL: https://www.sans.org/press/announcements/
+- Source: TechTarget | Title: Cybersecurity Information, News and Tips from TechTarget | URL: https://www.techtarget.com/cybersecurity/
+- Source: Fortinet | Title: Cybersecurity trends 2026: Defending against agentic &amp; AI threats | URL: https://www.fortinet.com/resources/cyberglossary/cybersecurity-trends-2026
+- Source: RuntimeAI | Title: AI Security Incidents: Week of October 16, 2026 &mdash; Claude Code Weaponized for 628K Ukrainian Breach, OpenAI Builds $250K Chrome Exploit in 6 Days, ASOS &amp; CenterPoint Hit &mdash; 18 AI Security Incidents &mdash; RuntimeAI | URL: https://runtimeai.io/blog/2026-10-16-ai-security-incidents.html
+- Acknowledgment: All sources cited with direct URLs. No creator disruption intended.
